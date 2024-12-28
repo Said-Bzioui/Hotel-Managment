@@ -1,0 +1,231 @@
+@import './main.css';
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    height: 100vh;
+}
+
+.room-handel {
+    background-color: white;
+    max-width: 900px;
+    width: 100%;
+    height: 95vh;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+
+.room-details .room-handel .content {
+    display: flex;
+}
+
+.room-details .room-handel .content .deatails {
+    padding-right: 20px;
+}
+
+.room-details .room-handel .content .deatails h3 {
+    max-width: 450px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #EEE;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    color: #333;
+}
+
+.room-details .room-handel .content .deatails .image {
+    max-width: 450px;
+    width: 100%;
+    height: 300px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.room-details .room-handel .content .deatails .image img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.room-details .room-handel .content .deatails .room-info {
+    margin-block: 10px;
+
+}
+
+.room-details .room-handel .content .deatails .room-info span {
+    background-color: #EEE;
+    padding: 5px;
+    border-radius: 5px;
+    color: #78716c;
+    font-size: 14px;
+}
+
+.room-details .room-handel .content .deatails>p {
+    color: #78716c;
+    font-size: 14px;
+    max-width: 450px;
+    width: 100%;
+}
+
+.room-details .room-handel .content .deatails .features {
+    margin-top: 10px;
+}
+
+.room-details .room-handel .content .deatails .features .features-list i {
+    color: var(--text-light);
+    font-size: 20px;
+    margin-right: 20px;
+    background-color: #eee;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.room-details .room-handel .content .confirme {
+    /* background-color: #45c69b; */
+    flex-grow: 1;
+    padding-inline: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #EEE;
+}
+
+
+.room-details .room-handel .content .confirme h3 {
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.room-details .room-handel .content .confirme .form-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+.room-details .room-handel .content .confirme .form-input label {
+    margin-bottom: 5px;
+    color: var(--text-light);
+}
+
+.room-details .room-handel .content .confirme .form-input input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 5px;
+    font-family: "roboto";
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.room-details .room-handel .content .confirme .service-check {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-left: 10px;
+
+}
+
+.room-details .room-handel .content .confirme .service-check .check-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.room-details .room-handel .content .confirme .service-check .check-box input {
+    accent-color: var(--primary-color);
+}
+
+.room-details .room-handel .content .confirme .service-check .check-box label {
+    /* color: #333; */
+    font-size: 14px;
+}
+.room-details .room-handel .content .confirme .service-check{
+    opacity: .5;
+
+}
+.room-details .room-handel .content .confirme .service-check span {
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.room-details .room-handel .content .confirme .discount-handel {
+    background-color: white;
+    /* width: fit-content; */
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.room-details .room-handel .content .confirme .discount-handel input {
+    height: 25px;
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 18px;
+    color: var(--text-light);
+}
+
+.room-details .room-handel .content .confirme .discount-handel button {
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.room-details .room-handel .content .confirme .total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.room-details .room-handel .content .confirme .total span {
+    font-weight: 600;
+    color: var(--text-light);
+
+}
+
+.room-details .room-handel .content .confirme .btns {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.room-details .room-handel .content .confirme .btns .confirm-btn,
+.room-details .room-handel .content .confirme .btns .cancel_btn {
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 15px;
+    height: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+.room-details .room-handel .content .confirme .btns .confirm-btn {
+    background-color: var(--primary-color);
+}
+
+.room-details .room-handel .content .confirme .btns .cancel_btn {
+    background-color: white;
+    color: #78716c;
+    border: 1px solid #ccc;
+    text-align: center;
+}
