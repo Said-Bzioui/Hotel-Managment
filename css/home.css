@@ -50,7 +50,11 @@ img {
 
 .header {
   background-image: url("../assets/header.jpg");
+<<<<<<< HEAD
   background-position: center ;
+=======
+  background-position: center center;
+>>>>>>> af5a82bb98bde7130c5e563c444348cbae929b14
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -121,9 +125,12 @@ nav {
   color: var(--white);
   text-align: center;
   opacity: 0.6;
+<<<<<<< HEAD
   background-color: #747474;
   width: fit-content;
   margin-inline: auto;
+=======
+>>>>>>> af5a82bb98bde7130c5e563c444348cbae929b14
 }
 
 .header__container h1 {

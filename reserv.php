@@ -30,6 +30,7 @@ if (isset($_POST['confirme'])) {
             $dateIn = $_POST['dateIn'];
             $dateOut = $_POST['dateOut'];
             $id_client =$_SESSION['user_id'];
+<<<<<<< HEAD
             var_dump($dateIn);
             echo '<br>';
             var_dump($dateOut);
@@ -45,13 +46,21 @@ if (isset($_POST['confirme'])) {
 
             $req = "INSERT INTO `reservations`
                     VALUES (NULL, :id_client, :id_chambre, :date_in, :date_out, 'en attente',:n_nights)";
+=======
+
+            $req = "INSERT INTO `reservations`
+                    VALUES (NULL, :id_client, :id_chambre, :date_in, :date_out, 'en attente')";
+>>>>>>> af5a82bb98bde7130c5e563c444348cbae929b14
 
             $stmt = $conx->prepare($req);
             $stmt->bindParam(':id_chambre', $id, PDO::PARAM_INT);
             $stmt->bindParam(':date_in', $dateIn, PDO::PARAM_STR);
             $stmt->bindParam(':date_out', $dateOut, PDO::PARAM_STR);
             $stmt->bindParam(':id_client', $id_client, PDO::PARAM_STR);
+<<<<<<< HEAD
             $stmt->bindParam(':n_nights', $days, PDO::PARAM_STR);
+=======
+>>>>>>> af5a82bb98bde7130c5e563c444348cbae929b14
 
             $stmt->execute();
 

@@ -1,12 +1,15 @@
 <?php
 session_start();
 include("../clients/../../database/db.php");
+<<<<<<< HEAD
 $page = "dashboard";
 
 $conected = false;
 if (isset($_SESSION['user_id'])) {
     $conected = true;
 }
+=======
+>>>>>>> af5a82bb98bde7130c5e563c444348cbae929b14
 
 ?>
 <!DOCTYPE html>
@@ -36,6 +39,7 @@ if (isset($_SESSION['user_id'])) {
 
                             <div class="hidden md:block">
                                 <div class="ml-4 flex items-center md:ml-6">
+<<<<<<< HEAD
                                  
 
                                 <!-- Profile dropdown -->
@@ -65,6 +69,34 @@ if (isset($_SESSION['user_id'])) {
                                                     class="fa-solid fa-arrow-right-from-bracket ml-2"></i>
                                             </a>
                                         </div>
+=======
+                                    <button type="button"
+                                        class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                        <span class="absolute -inset-1.5"></span>
+                                        <span class="sr-only">View notifications</span>
+                                        <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                            stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                                        </svg>
+                                    </button>
+
+                                    <!-- Profile dropdown -->
+                                    <div class="relative ml-3">
+                                        <div>
+                                            <button type="button"
+                                                class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                                <span class="absolute -inset-1.5"></span>
+                                                <span class="sr-only">Open user menu</span>
+                                                <img class="size-8 rounded-full"
+                                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                                    alt="">
+                                            </button>
+                                        </div>
+
+
+>>>>>>> af5a82bb98bde7130c5e563c444348cbae929b14
                                     </div>
                                 </div>
                             </div>
@@ -78,6 +110,7 @@ if (isset($_SESSION['user_id'])) {
 
             </div>
             <h1 class="text-2xl font-bold m-4">Bienvenue dans l'espace d'administration</h1>
+<<<<<<< HEAD
        <div class="container flex flex-col-reverse  px-6">
        <div class="  ">
        <div class="p-4">
@@ -149,6 +182,11 @@ if (isset($_SESSION['user_id'])) {
        <div class="w-4/6 grid grid-cols-1 md:grid-cols-5 gap-6 p-6 ">
                 <div class="bg-blue-100 p-4 rounded shadow w-fit">
                     <h2 class="text-md font-semibold w-fit">Nombre de clients</h2>
+=======
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mx-6">
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="text-xl font-semibold">Nombre de clients</h2>
+>>>>>>> af5a82bb98bde7130c5e563c444348cbae929b14
                     <?php
                     $count_Req = "SELECT COUNT(*) FROM  clients where role='client'";
                     $sql_state = $conx->prepare($count_Req);
@@ -156,8 +194,13 @@ if (isset($_SESSION['user_id'])) {
                     $counter = $sql_state->fetch(PDO::FETCH_ASSOC) ?>
                     <p class="text-blue-600 text-2xl"><?= $counter['COUNT(*)'] ?></p>
                 </div>
+<<<<<<< HEAD
                 <div class="bg-blue-100 p-4 rounded shadow w-fit">
                     <h2 class="text-md font-semibold w-full">Nombre de chambres</h2>
+=======
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="text-xl font-semibold">Nombre de chambres</h2>
+>>>>>>> af5a82bb98bde7130c5e563c444348cbae929b14
                     <?php
                     $count_Req = "SELECT COUNT(*) FROM  chambres";
                     $sql_state = $conx->prepare($count_Req);
@@ -165,15 +208,23 @@ if (isset($_SESSION['user_id'])) {
                     $counter = $sql_state->fetch(PDO::FETCH_ASSOC) ?>
                     <p class="text-green-600 text-2xl"><?= $counter['COUNT(*)'] ?></p>
                 </div>
+<<<<<<< HEAD
                 <div class="bg-blue-100 p-4 rounded shadow w-fit">
                     <h2 class="text-md font-semibold">Réservations en attente</h2>
                     <?php
                     $count_Req = "SELECT COUNT(*) FROM  reservations WHERE status ='en attente'";
+=======
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="text-xl font-semibold">Réservations en attente</h2>
+                    <?php
+                    $count_Req = "SELECT COUNT(*) FROM  reservations";
+>>>>>>> af5a82bb98bde7130c5e563c444348cbae929b14
                     $sql_state = $conx->prepare($count_Req);
                     $sql_state->execute();
                     $counter = $sql_state->fetch(PDO::FETCH_ASSOC) ?>
                     <p class="text-red-600 text-2xl"><?= $counter['COUNT(*)'] ?></p>
                 </div>
+<<<<<<< HEAD
                 <div class="bg-blue-100 p-4 rounded shadow w-fit">
                     <h2 class="text-md font-semibold">Montant</h2>
                     <?php
@@ -189,6 +240,11 @@ if (isset($_SESSION['user_id'])) {
     </div>
 
     <script src="../../js/app.js"></script>
+=======
+            </div>
+        </main>
+    </div>
+>>>>>>> af5a82bb98bde7130c5e563c444348cbae929b14
 </body>
 
 </html>

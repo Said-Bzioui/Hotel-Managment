@@ -12,6 +12,7 @@ cuncelBtn.addEventListener('click', () => {
 });
 
 
+<<<<<<< HEAD
 // ---------------------menu-btn-----------------------
 
 let menuBtn = document.querySelector('.menu-btn');
@@ -24,6 +25,8 @@ menuBtn.addEventListener('click', () => {
 
 
 
+=======
+>>>>>>> af5a82bb98bde7130c5e563c444348cbae929b14
 // // update un chambre
 // let updateBtn = document.querySelectorAll('.update_btn');
 // let popup_update = document.querySelector('.popup-update');
