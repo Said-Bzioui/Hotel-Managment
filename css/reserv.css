@@ -4,14 +4,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #edeaea;
+    background-color: #333;
     height: 100vh;
 }
 
 .room-handel {
     background-color: white;
+    max-width: 900px;
     width: 100%;
-    /* height: 95vh; */
+    height: 95vh;
     border-radius: 5px;
     padding: 20px;
 }
