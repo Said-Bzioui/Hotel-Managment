@@ -6,10 +6,14 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+$conected = false;
+if (isset($_SESSION['user_id'])) {
+    $conected = true;
+}
+
 if (isset($_GET['logout'])) {
-    session_unset();
     session_destroy();
-    header("Location: login.php");
+    header("Location: ./login.php");
     exit;
 }
 ?>
@@ -37,6 +41,7 @@ if (isset($_GET['logout'])) {
             </div>
             <div class="region">
                 <div class="contry"><i class="fa-solid fa-globe"></i>Morocco</div>
+                <!-- <div class="contry"><i class="fa-solid fa-ticket"></i></div> -->
 
                 <div class="user">
                     <i class="fa-regular fa-circle-user"></i>
@@ -44,9 +49,11 @@ if (isset($_GET['logout'])) {
                 </div>
                 <div class="usertoogle">
                     <a href="settings.php" class="item"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
-                    <a href="rooms.php?login" class="item"><i class="fa-solid fa-right-to-bracket"></i><span>Log
-                            In</span></a>
-                    <a href="romms.php?logout" class="logout"><span>Log out</span> <i
+                   <?php if(!$conected) { ?>
+                   <a href="rooms.php?login" class="item"><i class="fa-solid fa-right-to-bracket"></i><span>Log
+                   In</span></a>
+                   <?php }?>
+                    <a href="index.php?logout" class="logout"><span>Log out</span> <i
                             class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </div>
             </div>

@@ -12,6 +12,18 @@ cuncelBtn.addEventListener('click', () => {
 });
 
 
+// ---------------------menu-btn-----------------------
+
+let menuBtn = document.querySelector('.menu-btn');
+let usertoogle = document.querySelector('.usertoogle');
+menuBtn.addEventListener('click', () => {
+    usertoogle.classList.toggle('hidden');
+});
+
+
+
+
+
 // // update un chambre
 // let updateBtn = document.querySelectorAll('.update_btn');
 // let popup_update = document.querySelector('.popup-update');

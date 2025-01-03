@@ -30,15 +30,28 @@ if (isset($_POST['confirme'])) {
             $dateIn = $_POST['dateIn'];
             $dateOut = $_POST['dateOut'];
             $id_client =$_SESSION['user_id'];
+            var_dump($dateIn);
+            echo '<br>';
+            var_dump($dateOut);
+    // Convert date_in and date_out to DateTime objects
+    $date_in = new DateTime($dateIn);
+    $date_out = new DateTime($dateOut);
+    var_dump($date_in);
+    var_dump($date_out);
+
+    $interval = $date_in->diff($date_out);
+    $days = $interval->days;
+    // ----------------------------------------------
 
             $req = "INSERT INTO `reservations`
-                    VALUES (NULL, :id_client, :id_chambre, :date_in, :date_out, 'en attente')";
+                    VALUES (NULL, :id_client, :id_chambre, :date_in, :date_out, 'en attente',:n_nights)";
 
             $stmt = $conx->prepare($req);
             $stmt->bindParam(':id_chambre', $id, PDO::PARAM_INT);
             $stmt->bindParam(':date_in', $dateIn, PDO::PARAM_STR);
             $stmt->bindParam(':date_out', $dateOut, PDO::PARAM_STR);
             $stmt->bindParam(':id_client', $id_client, PDO::PARAM_STR);
+            $stmt->bindParam(':n_nights', $days, PDO::PARAM_STR);
 
             $stmt->execute();
 

@@ -1,7 +1,12 @@
 <?php
 session_start();
 include("../clients/../../database/db.php");
+$page = "reserv";
 
+$conected = false;
+if (isset($_SESSION['user_id'])) {
+    $conected = true;
+}
 // delete
 if (isset($_GET['delete'])) {
     $id_reserv = $_GET['delete'];
@@ -60,51 +65,9 @@ if (isset($_POST['ajouter'])) {
 <body class="bg-gray-100 font-sans">
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <div class="w-1/5 bg-white shadow-lg p-4">
-            <!-- Search Box -->
-            <div class="mb-5 text-center">
-                <h2 class="text-2xl font-semibold"> Tableau de bord</h2>
-            </div>
-            <hr>
-            <!-- Navigation Menu -->
-            <ul class="space-y-2 mt-4">
-                <!-- Single Item -->
-                <li>
-                    <a href="../dashboard/dashboard.php"
-                        class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">
-                        <span class="material-icons text-gray-400 mr-3 ml-2">dashboard</span>
-                        Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="../clients/clients.php"
-                        class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">
-                        <span class="material-icons text-gray-400 mr-3 ml-2">group</span>
-                        Clients
-                    </a>
-                </li>
-                <li>
-                    <a href="../rooms/rooms.php"
-                        class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">
-                        <i class="fa-solid fa-bed text-xl text-gray-400 mr-3 ml-2"></i>
-                        Chambres
-                    </a>
-                </li>
-                <li>
-                    <a href="../reservation/reservations.php"
-                        class="relative flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-md bg-blue-50">
-                        <span class="block w-1.5 h-4/5 absolute left-1 top-1/2 -translate-y-1/2 rounded-md  bg-blue-500"
-                            aria-hidden="true"></span>
-                        <span class="material-icons text-gray-400 mr-3 ml-2">event</span>
-                        Reservation
-                    </a>
-                </li>
-
-
-            </ul>
-        </div>
+        <?php include("../clients/../../sections/sideBar.php") ?>
         <!-- Main Content -->
-        <div class="w-4/5 ">
+        <div class="w-4/5 grow">
             <!-- header -->
             <div class="shadow-md ">
                 <nav class="bg-white">
@@ -113,32 +76,35 @@ if (isset($_POST['ajouter'])) {
 
                             <div class="hidden md:block">
                                 <div class="ml-4 flex items-center md:ml-6">
-                                    <button type="button"
-                                        class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                                        <span class="absolute -inset-1.5"></span>
-                                        <span class="sr-only">View notifications</span>
-                                        <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                            stroke="currentColor" aria-hidden="true" data-slot="icon">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
-                                        </svg>
-                                    </button>
+                             
 
-                                    <!-- Profile dropdown -->
-                                    <div class="relative ml-3">
-                                        <div>
-                                            <button type="button"
-                                                class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                                                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                                                <span class="absolute -inset-1.5"></span>
-                                                <span class="sr-only">Open user menu</span>
-                                                <img class="size-8 rounded-full"
-                                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                                    alt="">
-                                            </button>
+                                   <!-- Profile dropdown -->
+                                   <div class="relative">
+                                        <button type="button"
+                                            class="menu-btn relative flex max-w-xs items-center rounded-full text-white py-1 px-2 bg-gray-800 text-sm focus:outline-none focus:ring-2"
+                                            id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                            <?=$_SESSION['user_name'];?>
+                                            <i class="fa-regular fa-user text-slate-50 p-2"></i>
+                                        </button>
+                                        <div
+                                            class="usertoogle absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 hidden">
+                                            <a href="settings.php"
+                                                class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                                                <i class="fa-solid fa-gear mr-2"></i><span>Settings</span>
+                                            </a>
+                                      <?php 
+                                      if(!$conected){?>
+                                            <a href="rooms.php?login"
+                                                class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+                                                <i class="fa-solid fa-right-to-bracket mr-2"></i><span>Log In</span>
+                                            </a>
+                                      <?php    } ?>
+                                            <a href="rooms.php?logout "
+                                                class=" px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-white flex items-center">
+                                                <span>Log out</span> <i
+                                                    class="fa-solid fa-arrow-right-from-bracket ml-2"></i>
+                                            </a>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -289,6 +255,7 @@ if (isset($_POST['ajouter'])) {
                                 <th class="px-4 py-2">Date out</th>
                                 <th class="px-4 py-2">id client</th>
                                 <th class="px-4 py-2">id Chombre</th>
+                                <th class="px-4 py-2">Number Nights</th>
                                 <th class="px-4 py-2">Status</th>
                                 <th class="px-4 py-2">Actions</th>
 
@@ -325,9 +292,8 @@ if (isset($_POST['ajouter'])) {
                                 <td class="border-y px-4 py-2"><?= $row['date_arrivee'] ?></td>
                                 <td class="border-y px-4 py-2"><?= $row['date_depart'] ?></td>
                                 <td class="border-y px-4 py-2"><?= $row['id_client'] ?></td>
-
-                                <td class=" border-y px-4 py-2"><?= $row['id_chambre'] ?>
-                                </td>
+                                <td class=" border-y px-4 py-2"><?= $row['id_chambre'] ?></td>
+                                <td class=" border-y px-4 py-2"><?= $row['n_nights'] ?></td>
                                 <td class="border-y px-4 py-2">
                                     <span
                                         class="w-full  text-sm <?= $row['status'] == 'confirmée' ? 'bg-green-300':'bg-yellow-300' ?>  px-2 py-1 rounded">
