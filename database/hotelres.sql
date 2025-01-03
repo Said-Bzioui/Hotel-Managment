@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 30 déc. 2024 à 11:57
+-- Généré le : sam. 28 déc. 2024 à 17:59
 -- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.2.12
+-- Version de PHP : 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -128,9 +128,8 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id_client`, `nom`, `email`, `adresse`, `telephone`, `password`, `role`) VALUES
-(21, 'SAID BZIOUI', 'ss@bb', 'dsds', '123123', '$2y$10$ykklGbU.2/g0jHrRmZ7Xd.4.qvh7Evuxf.d32vmLm2atcKdY1StNy', 'Admin'),
-(22, 'said bzioui', 'said@b', 'aaaaa', '4', '123', 'Client'),
-(24, 'SAID BZIOUI', 'said@bb', 'ddddddddddd', 'dddddddddddddddddd', '$2y$10$t9hMVq2qLSQT0HwubXq8IuJt1/GNVu.3JxIhX0A.snv5g.3LTiwTy', 'client');
+(20, 'said bzioui', 's@b', 'rabat', '12345', '1122', 'Admin'),
+(21, 'SAID BZIOUI', 'ss@bb', 'dsds', '123123', '$2y$10$ykklGbU.2/g0jHrRmZ7Xd.4.qvh7Evuxf.d32vmLm2atcKdY1StNy', 'Admin');
 
 -- --------------------------------------------------------
 
@@ -151,7 +150,7 @@ CREATE TABLE `factures` (
 --
 
 INSERT INTO `factures` (`id_facture`, `id_reservation`, `montant_total`, `date_facture`, `statut_paiement`) VALUES
-(15, 41, 8.00, '2024-12-30', 'en attente');
+(11, 37, 4.00, '2024-12-27', 'en attente');
 
 -- --------------------------------------------------------
 
@@ -219,33 +218,29 @@ CREATE TABLE `reservations` (
   `id_chambre` int(11) NOT NULL,
   `date_arrivee` datetime NOT NULL,
   `date_depart` datetime NOT NULL,
-  `status` enum('en attente','confirmée','annulée') NOT NULL DEFAULT 'en attente',
-  `n_nights` int(11) NOT NULL
+  `status` enum('en attente','confirmée','annulée') NOT NULL DEFAULT 'en attente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `reservations`
 --
 
-INSERT INTO `reservations` (`id_reservation`, `id_client`, `id_chambre`, `date_arrivee`, `date_depart`, `status`, `n_nights`) VALUES
-(41, 24, 28, '2024-12-30 00:00:00', '2025-01-01 00:00:00', 'en attente', 2);
+INSERT INTO `reservations` (`id_reservation`, `id_client`, `id_chambre`, `date_arrivee`, `date_depart`, `status`) VALUES
+(37, 21, 28, '2024-11-17 02:02:00', '2024-11-11 00:00:00', 'en attente');
 
 --
 -- Déclencheurs `reservations`
 --
 DELIMITER $$
 CREATE TRIGGER `after_insert_reservation` AFTER INSERT ON `reservations` FOR EACH ROW BEGIN
-    DECLARE n_nights INT;
-        DECLARE total_amount DECIMAL(10,2);
-    SET n_nights = DATEDIFF(NEW.date_depart, NEW.date_arrivee);
-    SELECT prix INTO total_amount
-    FROM chambres
-    WHERE chambres.id_chambre = NEW.id_chambre;
-    
-    SET total_amount = total_amount * n_nights;
-
+    -- إدخال فاتورة جديدة مرتبطة بالحجز الذي تم إنشاؤه
     INSERT INTO factures (id_reservation, montant_total, date_facture, statut_paiement)
-    VALUES (NEW.id_reservation, total_amount, CURDATE(), 'en attente');
+    VALUES (NEW.id_reservation, 
+            (SELECT prix 
+             FROM chambres 
+             WHERE chambres.id_chambre = NEW.id_chambre), 
+            CURDATE(), 
+            'en attente');
 END
 $$
 DELIMITER ;
@@ -396,13 +391,13 @@ ALTER TABLE `chambres`
 -- AUTO_INCREMENT pour la table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT pour la table `factures`
 --
 ALTER TABLE `factures`
-  MODIFY `id_facture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_facture` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `hotels`
@@ -420,7 +415,7 @@ ALTER TABLE `paiements`
 -- AUTO_INCREMENT pour la table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `id_reservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_reservation` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT pour la table `reviews`

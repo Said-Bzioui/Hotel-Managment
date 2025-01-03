@@ -1,16 +1,10 @@
 <?php
 session_start();
 include("../clients/../../database/db.php");
-$page = "chambres";
-
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../../login.php");
     exit;
-}
-$conected = false;
-if (isset($_SESSION['user_id'])) {
-    $conected = true;
 }
 
 if (isset($_GET['logout'])) {
@@ -108,10 +102,53 @@ if (isset($_GET['empty'])) {
 <body class="bg-gray-100 font-sans">
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <?php include("../clients/../../sections/sideBar.php") ?>
+        <div class="w-1/5 bg-white shadow-lg p-4">
+            <!-- Search Box -->
+            <div class="mb-5 text-center">
+                <h2 class="text-2xl font-semibold"> Tableau de bord</h2>
+            </div>
+            <hr>
+            <!-- Navigation Menu -->
+            <ul class="space-y-2 mt-4">
+                <!-- Single Item -->
+                <li>
+                    <a href="../dashboard/dashboard.php"
+                        class="relative flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">
+                        <span class="material-icons text-gray-400 mr-3 ml-2">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="../clients/clients.php"
+                        class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">
+                        <span class="material-icons text-gray-400 mr-3 ml-2">group</span>
+                        Clients
+                    </a>
+                </li>
+                <li>
+                    <a href="../rooms/rooms.php"
+                        class="relative flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-md bg-blue-50">
+                        <span class="block w-1.5 h-4/5 absolute left-1 top-1/2 -translate-y-1/2 rounded-md  bg-blue-500"
+                            aria-hidden="true"></span>
+                        <i class="fa-solid fa-bed text-xl text-gray-400 mr-3 ml-2 "></i>
+                        Chambres
+                    </a>
+                </li>
+                <li>
+                    <a href="../reservation/reservations.php"
+                        class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">
+                        <span class="material-icons text-gray-400 mr-3 ml-2">event</span>
+
+                        Reservation
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
         <!-- Main Content -->
 
-        <div class="relative w-4/5 pb-6 grow">
+        <div class="relative w-4/5 pb-6">
             <!-- empty -->
             <?php
             if ($empty) { ?>
@@ -172,24 +209,23 @@ if (isset($_GET['empty'])) {
                                     <!-- Profile dropdown -->
                                     <div class="relative">
                                         <button type="button"
-                                            class="menu-btn relative flex max-w-xs items-center rounded-full text-white py-1 px-2 bg-gray-800 text-sm focus:outline-none focus:ring-2"
+                                            class="relative flex max-w-xs items-center rounded-full text-white py-1 px-2 bg-gray-800 text-sm focus:outline-none focus:ring-2"
                                             id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                             <?=$_SESSION['user_name'];?>
                                             <i class="fa-regular fa-user text-slate-50 p-2"></i>
                                         </button>
+
+                                        <!-- تصميم القائمة المنسدلة -->
                                         <div
-                                            class="usertoogle absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 hidden">
+                                            class="usertoogle absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 ">
                                             <a href="settings.php"
                                                 class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
                                                 <i class="fa-solid fa-gear mr-2"></i><span>Settings</span>
                                             </a>
-                                      <?php 
-                                      if(!$conected){?>
                                             <a href="rooms.php?login"
                                                 class=" px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
                                                 <i class="fa-solid fa-right-to-bracket mr-2"></i><span>Log In</span>
                                             </a>
-                                      <?php    } ?>
                                             <a href="rooms.php?logout "
                                                 class=" px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-white flex items-center">
                                                 <span>Log out</span> <i
