@@ -48,23 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
     .btn {
-<<<<<<< HEAD
         border: none !important;
         font-size: 20px;
         font-weight: 600;
     }
-=======
-        background-color: orange !important;
-        border: none !important;
-        font-size: 20px;
-
-        font-weight: 600;
-    }
-
-    .btn:hover {
-        background-color: #d17a0e !important;
-    }
->>>>>>> af5a82bb98bde7130c5e563c444348cbae929b14
     </style>
 
 </head>
