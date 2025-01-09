@@ -49,10 +49,17 @@ if (isset($_GET['logout'])) {
                 </div>
                 <div class="usertoogle">
                     <a href="settings.php" class="item"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+<<<<<<< HEAD
+                    <?php if (!$conected) { ?>
+                        <a href="rooms.php?login" class="item"><i class="fa-solid fa-right-to-bracket"></i><span>Log
+                                In</span></a>
+                    <?php } ?>
+=======
                    <?php if(!$conected) { ?>
                    <a href="rooms.php?login" class="item"><i class="fa-solid fa-right-to-bracket"></i><span>Log
                    In</span></a>
                    <?php }?>
+>>>>>>> 5aa67878e00ad83373f6b1db16b73777eb16e682
                     <a href="index.php?logout" class="logout"><span>Log out</span> <i
                             class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 </div>
@@ -73,7 +80,11 @@ if (isset($_GET['logout'])) {
                         $stmt->execute();
 
                         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+<<<<<<< HEAD
+                            <option value=<?= $row['ville'] ?>><?= $row['ville'] ?></option>
+=======
                         <option value=<?= $row['ville'] ?>><?= $row['ville'] ?></option>
+>>>>>>> 5aa67878e00ad83373f6b1db16b73777eb16e682
                         <?php } ?>
                     </select>
 
@@ -99,12 +110,20 @@ if (isset($_GET['logout'])) {
                 </div>
                 <div class="list">
                     <?php
+<<<<<<< HEAD
+                    $id_hotel=$_GET['id_hotel'];
+=======
+>>>>>>> 5aa67878e00ad83373f6b1db16b73777eb16e682
                     try {
                         if (isset($_GET['ville']) && !empty($_GET['ville'])) {
                             $ville = $_GET["ville"];
                             $req = "SELECT
                     c.id_chambre,
                     c.prix,
+<<<<<<< HEAD
+                    c.img,
+=======
+>>>>>>> 5aa67878e00ad83373f6b1db16b73777eb16e682
                     t.type_chambre,
                     t.description,
                     h.nom_hotel,
@@ -120,6 +139,10 @@ if (isset($_GET['logout'])) {
                             $req = "SELECT
                     c.id_chambre,
                     c.prix,
+<<<<<<< HEAD
+                    c.img,
+=======
+>>>>>>> 5aa67878e00ad83373f6b1db16b73777eb16e682
                     t.type_chambre,
                     t.description,
                     h.nom_hotel,
@@ -137,6 +160,25 @@ if (isset($_GET['logout'])) {
 
                         if ($rooms) {
                             foreach ($rooms as $room) { ?>
+<<<<<<< HEAD
+                                <div class="room__card">
+                                    <div class="room__card__image">
+                                        <img src="./assets/rooms/<?= htmlspecialchars($room['img']) ?>" alt="room" />
+                                        <div class="ville"><?= htmlspecialchars($room['ville']) ?></div>
+                                    </div>
+                                    <div class="room__card__details">
+                                        <h3><?= htmlspecialchars($room['type_chambre']) ?></h3>
+                                        <p><?= htmlspecialchars($room['description']) ?></p>
+                                        <div class="foot">
+                                            <span>$<?= htmlspecialchars($room['prix']) ?><br>
+                                                <span class="det">Per day</span>
+                                            </span>
+                                            <a class="btn book-btn"
+                                                href="./reserv.php?id=<?= htmlspecialchars($room['id_chambre']) ?>">Book Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+=======
                     <div class="room__card">
                         <div class="room__card__image">
                             <img src="./assets/room-1.jpg" alt="room" />
@@ -154,6 +196,7 @@ if (isset($_GET['logout'])) {
                             </div>
                         </div>
                     </div>
+>>>>>>> 5aa67878e00ad83373f6b1db16b73777eb16e682
                     <?php }
                         } else {
                             echo "<p>No rooms available.</p>";
