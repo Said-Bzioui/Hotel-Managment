@@ -23,7 +23,7 @@ if ($empty) { ?>
 <div class="fixed left-2/4 top-5 w-100 h-16 bg-gray-200 rounded-t-md border-red-500  mb-4 toast">
     <div class="container relative p-3 flex items-center w-full h-full  text-white  ">
         <i class="fa-solid fa-circle-exclamation text-red-500 mr-3"></i>
-        <p class="text-red-800  font-bold">Tous Les Champ sont Obligatoire </p>
+        <p class="text-red-800  font-bold">Tous Les Champ sont Obligatoire !!</p>
         <span class="h-1 w-full absolute bg-red-500 block left-0 bottom-0  "></span>
     </div>
 </div>
