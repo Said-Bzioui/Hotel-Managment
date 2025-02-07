@@ -13,7 +13,7 @@
         <nav>
             <div class="nav__bar">
                 <div class="logo">
-                    <a href="#">ROyal PArk</a>
+                    <a href="./index.php">ROyal PArk</a>
                 </div>
                 <div class="nav__menu__btn" id="menu-btn">
                     <i class="ri-menu-line"></i>
